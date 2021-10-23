@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  discovery:
+    build: ../discovery-server
+    ports:
+      - "8761:8761"
+    image: "discovery-service"
+  hotel_A:
+    build: ../Hotel
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+    ports:
+      - "3000:8080"
+    image: "hotel-service"
