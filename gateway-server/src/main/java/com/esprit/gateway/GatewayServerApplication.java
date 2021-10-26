@@ -74,8 +74,17 @@ public class GatewayServerApplication {
 						.filters(f -> f.addRequestHeader("second-request", "second-request-header")
 						.addResponseHeader("second-response", "second-response-header").stripPrefix(1))
 						.uri("lb://HOTEL-SERVICE")))
-				
+				.route((r -> r.path("/bateau/**")
+						.filters(f -> f.addRequestHeader("third-request", "third-request-header")
+						.addResponseHeader("third-response", "third-response-header").stripPrefix(1))
+						.uri("lb://BATEAU")))
+				.route((r -> r.path("/voiture/**")
+						.filters(f -> f.addRequestHeader("fourth-request", "fourh-request-header")
+						.addResponseHeader("fourth-response", "fourh-response-header").stripPrefix(1))
+						.uri("lb://LOCATIONVOITURE-SERVICE")))
+						
 				.build();
+		
 
 	}
 

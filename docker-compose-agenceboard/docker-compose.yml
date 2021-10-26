@@ -47,3 +47,33 @@ services:
    depends_on:
       - discovery
    
+  
+ voiture:
+   build: ../LocationVoiture
+   environment:
+    - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+   ports:
+    - "3006:8082"
+   image: "docker-locationvoiture"
+   depends_on:
+      - discovery  
+  
+  
+  
+ Bateau:
+   build: ../bateau
+   ports:
+    - "3005:3005"
+   image: "docker-bateau-node"
+   links:
+    - mongo
+   depends_on:
+     - discovery
+      
+      
+ mongo:
+   container_name: mongo
+   ports:
+    - "27017:27017"
+   image: "mongo"
+   
