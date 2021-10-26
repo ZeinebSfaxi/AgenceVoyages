@@ -5,6 +5,19 @@ services:
    ports:
      - "8761:8761"
    image: "discovery-service"
+   
+ config-server:
+   build: ../config-server
+   environment:
+     - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+   ports:
+     - "8888:8888"
+   image: "config-server"
+   depends_on:
+     - discovery  
+   
+   
+   
  hotel_A:
    build: ../Hotel
    environment:
@@ -13,7 +26,7 @@ services:
      - "3000:8080"
    image: "hotel-service"
    depends_on:
-     - discovery
+     - config-server
     
  ReservationA:
    build: ../ReservationVol-Service
@@ -23,7 +36,7 @@ services:
    - "3001:8081"
    image: "docker-service-reservationvol"
    depends_on:
-     - discovery
+     - config-server
   
   
  ReservationB:
@@ -34,7 +47,7 @@ services:
     - "3002:8081"
    image: "docker-service-reservationvol"
    depends_on:
-      - discovery
+      - config-server
    
    
  Gateway:
@@ -56,7 +69,7 @@ services:
     - "3006:8082"
    image: "docker-locationvoiture"
    depends_on:
-      - discovery  
+      - config-server  
   
   
   
