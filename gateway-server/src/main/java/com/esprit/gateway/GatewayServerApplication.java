@@ -38,10 +38,27 @@ public class GatewayServerApplication {
 	SecurityWebFilterChain authorization(ServerHttpSecurity http) {
 
 		final String reservationApi = "/reservation/api/reservationVols/**";
+		final String hotelsApi = "/hotel/hotels";
+		final String voitureApi = "/voiture/locationVoitures";
+		final String bateauApi = "/bateau/api/bateau";
+		
+
 		return http.httpBasic(Customizer.withDefaults()).csrf(ServerHttpSecurity.CsrfSpec::disable)
-				.authorizeExchange(ae -> ae.pathMatchers(HttpMethod.POST, reservationApi).authenticated()
+				.authorizeExchange(ae -> ae
+						.pathMatchers(HttpMethod.POST, reservationApi).authenticated()
 						.pathMatchers(HttpMethod.PUT, reservationApi).authenticated()
-						.pathMatchers(HttpMethod.DELETE, reservationApi).authenticated().anyExchange().permitAll())
+						.pathMatchers(HttpMethod.DELETE, reservationApi).authenticated()
+						.pathMatchers(HttpMethod.POST, hotelsApi).authenticated()
+						.pathMatchers(HttpMethod.PUT, hotelsApi+"/**").authenticated()
+						.pathMatchers(HttpMethod.DELETE, hotelsApi+"/**").authenticated()
+						.pathMatchers(HttpMethod.POST, voitureApi).authenticated()
+						.pathMatchers(HttpMethod.PUT, voitureApi+"/**").authenticated()
+						.pathMatchers(HttpMethod.DELETE, voitureApi+"/**").authenticated()
+						.pathMatchers(HttpMethod.POST, bateauApi).authenticated()
+						.pathMatchers(HttpMethod.PUT, bateauApi+"/**").authenticated()
+						.pathMatchers(HttpMethod.DELETE, bateauApi+"/**").authenticated()
+						
+						.anyExchange().permitAll())
 				.build();
 	}
 
