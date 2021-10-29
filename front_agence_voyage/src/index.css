@@ -4,3 +4,11 @@ main {
 h3 {
     padding: 1rem 0;
 }
+
+
+.card:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+

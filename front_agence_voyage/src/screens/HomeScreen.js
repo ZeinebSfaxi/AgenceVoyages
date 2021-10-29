@@ -1,48 +1,59 @@
 import React from 'react';
-import {Carousel} from "react-bootstrap";
+import {Carousel,Container} from "react-bootstrap";
+import image1 from './home/image1.jpg'
+import image2 from './home/image2.jpg'
+import image3 from './home/image3.jpg'
 
 
 const HomeScreen = () => {
     return (
+        <>
         <div>
             <Carousel>
                 <Carousel.Item>
                     <img
+                        style={{objectFit:"cover", width:"100%", height:"700px"}}
                         className="d-block w-100"
-                        src="1.jpg"
+                        src={image2}
                         alt="First slide"
                     />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <Carousel.Caption style={{backgroundColor: 'rgba(241, 179, 197, 0.7)'}}>
+                        <h3>YOU DESERVE THE BEST</h3>
+                        <p>Quality and quantity with the best prices.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
+                        style={{objectFit:"cover", width:"100%", height:"700px"}}
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
+                        src={image1}
                         alt="Second slide"
                     />
 
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <Carousel.Caption style={{backgroundColor: 'rgba(241, 179, 197, 0.7)' }}>
+                        <h3>YOU DESERVE HAPPINESS</h3>
+                        <p>Make yourself and your loved ones happy.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
+                        style={{objectFit:"cover", width:"100%", height:"700px"}}
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
+                        src={image3}
                         alt="Third slide"
                     />
 
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <Carousel.Caption style={{backgroundColor: 'rgba(241, 179, 197, 0.7)'}}>
+                        <h3>YOU DESERVE CARE</h3>
+                        <p>We care about you and will only provide the best.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
         </div>
+            <Container className="mt-5 mb-5" style={{backgroundColor:'#860F30', height:"125px", width:"100%"}}>
+                <h2 className="text-center py-5" style={{color:'white'}}>because we care for your happiness</h2>
+            </Container>
+        </>
     );
 };
 

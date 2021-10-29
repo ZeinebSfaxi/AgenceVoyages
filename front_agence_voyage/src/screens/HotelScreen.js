@@ -15,6 +15,19 @@ const HotelScreen = () => {
 
     }
     //get posts
+    const fetcemployees = () => {
+        axios.get(`/employee`, config).then(res => {
+            console.log(res.data);
+            
+           
+           
+          
+            setHotels(res.data._embedded.hotels)
+
+            }
+        )
+    }
+
     const fetchHotels = () => {
         axios.get(`/hotel/hotels`, config).then(res => {
           //console.log(res.data._embedded.hotels)
@@ -25,8 +38,11 @@ const HotelScreen = () => {
     }
 
     useEffect(() => {
-        fetchHotels()
-        console.log(hotels)
+       // fetchHotels()
+        fetcemployees();
+        //console.log(hotels)
+        
+
     }, [])
 
     return (
